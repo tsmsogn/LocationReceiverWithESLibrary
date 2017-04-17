@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LocationReceiverWithESLibrary</string>
+    <string name="button1">Subscribe</string>
+    <string name="button2">Unsubscribe</string>
 </resources>
