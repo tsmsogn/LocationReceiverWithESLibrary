@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.5"
+            android:enabled="false"
+            android:onClick="subscribe"
             android:text="@string/button1" />
 
         <Button
@@ -36,6 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.5"
+            android:enabled="false"
+            android:onClick="unsubscribe"
             android:text="@string/button2" />
     </LinearLayout>
 

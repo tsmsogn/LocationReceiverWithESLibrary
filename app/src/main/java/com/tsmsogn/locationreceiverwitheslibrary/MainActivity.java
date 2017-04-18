@@ -45,20 +45,6 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText1);
         subscibeButton = (Button) findViewById(R.id.button1);
         unsubscribeButton = (Button) findViewById(R.id.button2);
-
-        subscibeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                subscribe();
-            }
-        });
-        unsubscribeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                unsubscribe();
-            }
-        });
-
         formatter = DataFormatter.getJSONFormatter(this, SensorUtils.SENSOR_TYPE_LOCATION);
 
         // Here, thisActivity is the current activity
@@ -91,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void subscribe() {
+    public void subscribe(View view) {
         if (!isSensing) {
             try {
                 id = sm.subscribeToSensorData(SensorUtils.SENSOR_TYPE_LOCATION, listener);
@@ -104,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void unsubscribe() {
+    public void unsubscribe(View view) {
         if (isSensing) {
             try {
                 sm.unsubscribeFromSensorData(id);
@@ -124,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
             sm.setSensorConfig(SensorUtils.SENSOR_TYPE_LOCATION, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS, 1000L);
             sm.setSensorConfig(SensorUtils.SENSOR_TYPE_LOCATION, PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS, 1000L);
             listener = new LocationSensorDataListener();
+
+            subscibeButton.setEnabled(true);
+            unsubscribeButton.setEnabled(true);
         } catch (ESException e) {
             e.printStackTrace();
         }
